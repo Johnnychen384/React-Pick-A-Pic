@@ -1,38 +1,619 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  color: #05386B;
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background-color: #5CDB95;
+  width: 100vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+/* NavBar related css */
+.navbar {
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+  text-decoration: none;
+}
+
+.navbar .flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8vw;
+  margin-right: 3.4em;
+
+}
+
+.navbar h1{
+  transition: transform .1s;
+  margin-bottom: 2em;
+}
+
+.navbar h1:hover {
+  transform: scale(1.1)
+}
+
+/* navbar title related media q's */
+@media screen and (min-width: 1240px) {
+  .navbar h1 {
+    font-size: xx-large;
+    margin-left: 2em;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+@media screen and (min-width: 1920px) {
+  .navbar h1 {
+    font-size: 3em;
+    margin-left: 2em;
+  }
+}
+
+
+/* cart icon css */
+.navbar .unfilledCart{
+  font-size: 1.2em;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar .unfilledCart:hover{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navbar .FilledCart{
+  font-size: 1.2em;
+  color: #05386B;
+}
+
+.navbar .FilledCart:hover{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-2px, -2px, 0);
   }
-  to {
-    transform: rotate(360deg);
+  
+  20%, 80% {
+    transform: translate3d(1px, 1px, 0);
   }
+
+  30%, 50%, 70% {
+    transform: translate3d(-2px, -2px, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(1px, 1px, 0);
+  }
+}
+
+/* Shopping Cart related media q's */
+@media screen and (min-width: 540px) {
+  .navbar .unfilledCart{
+    margin-right: 1em;
+  }
+  
+  .navbar .FilledCart{
+    margin-right: 1em;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .navbar .unfilledCart{
+    margin-right: 2em;
+  }
+  
+  .navbar .FilledCart{
+    margin-right: 2em;
+  }
+}
+
+@media screen and (min-width: 1040px) {
+  .navbar .unfilledCart{
+    margin-right: 2em;
+    font-size: x-large;
+  }
+  
+  .navbar .FilledCart{
+    margin-right: 2em;
+    font-size: x-large;
+  }
+
+}
+
+@media screen and (min-width: 1920px) {
+  .navbar .unfilledCart{
+    margin-right: 2em;
+    font-size: 3em;
+  }
+  
+  .navbar .FilledCart{
+    margin-right: 2em;
+    font-size: 3em;
+  }
+}
+
+
+
+/* each image in the homepage  */
+.image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2.5em;
+  z-index: 0;
+}
+
+.image img{
+  width: 70vw;
+  transition: transform .2s
+}
+
+.image img:hover{
+  transform: scale(1.1);
+  box-shadow: 0.1em 0.1em 7em;
+}
+
+/* 1040px changes homepage images to grid */
+@media screen and (min-width: 1040px) {
+
+  .gridEl{
+    display: grid;
+    grid-gap: 3em;
+    grid-template-rows: minmax(7em, auto), repeat(6, 5em);
+    grid-template-columns: repeat(8, 5em);
+    grid-auto-flow: dense;
+    margin-left: 1.7em;
+    margin-top: 2em;
+    position: relative;
+  }
+  .image {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 22vh;
+  }
+
+  .image img {
+    width: 14em;
+    height: 100%;
+  }
+
+}
+
+@media screen and (min-width: 1100px) {
+
+  .gridEl{
+    left: 4%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .gridEl{
+    left: 8%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .gridEl{
+    grid-template-columns: repeat(10, 5em);
+    left: 6%;
+  }
+  
+}
+
+@media screen and (min-width: 1920px) {
+  .gridEl{
+    grid-template-columns: repeat(10, 5em);
+    grid-gap: 6.5em;
+    left: 4%;
+  }
+
+  .image {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 24vh;
+  }
+
+  .image img {
+    width: 20em;
+    height: 100%;
+  }
+  
+}
+
+
+
+/* css for heart icon */
+.image .unfilled {
+  position: absolute;
+  left: 2.3em;
+  top: 0.5em;
+  font-size: 1.7em;
+  color: white;
+  z-index: 1;
+}
+
+
+
+.image .filled {
+  position: absolute;
+  left: 2.3em;
+  top: 0.5em;
+  font-size: 1.7em;
+  /* color: white; */
+  z-index: 1;
+}
+
+
+
+/* hearts media q's */
+@media screen and (min-width: 450px) {
+  .image .unfilled {
+    left: 2.7em; 
+  }
+  
+  .image .filled {
+    left: 2.7em;
+  }
+
+}
+
+@media screen and (min-width: 500px) {
+  .image .unfilled {
+    left: 3.5em; 
+  }
+  
+  .image .filled {
+    left: 3.5em;
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+  .image .unfilled {
+    left: 4.5em; 
+  }
+  
+  .image .filled {
+    left: 4.5em;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .image .unfilled {
+    left: 5.5em; 
+    font-size: 2em;
+  }
+  
+  .image .filled {
+    left: 5.5em;
+    font-size: 2em;
+  }
+
+}
+
+@media screen and (min-width: 1040px) {
+  .image .unfilled {
+    left: 8em; 
+    font-size: 1.35em;
+  }
+  
+  .image .filled {
+    left: 8em;
+    font-size: 1.35em;
+  }
+
+}
+
+@media screen and (min-width: 1920px) {
+  .image .unfilled {
+    left: 5.5em; 
+    font-size: 2.5em;
+  }
+  
+  .image .filled {
+    left: 5.5em;
+    font-size: 2.5em;
+  }
+}
+
+
+
+/* css for plus icon */
+.image .plusUnfilled{
+  position: absolute;
+  right: 2.7em;
+  top: 0.5em;
+  font-size: 1.5em;
+  color: white;
+  z-index: 1;
+}
+
+
+.image .plusFilled{
+  position: absolute;
+  right: 2.7em;
+  top: 0.5em;
+  font-size: 1.5em;
+  color: #05386B;
+  z-index: 1;
+}
+
+/* plus signs media q's */
+@media screen and (min-width: 450px) {
+  .image .plusUnfilled{
+    right: 3.1em;
+  }
+  
+  
+  .image .plusFilled{
+    right: 3.1em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .image .plusUnfilled{
+    right: 3.8em;
+  }
+  
+  
+  .image .plusFilled{
+    right: 3.8em;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .image .plusUnfilled{
+    right: 5em;
+  }
+  
+  
+  .image .plusFilled{
+    right: 5em;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .image .plusUnfilled{
+    right: 5.8em;
+    font-size: 2em;
+  }
+  
+  
+  .image .plusFilled{
+    right: 5.8em;
+    font-size: 2em;
+  }
+}
+
+@media screen and (min-width: 1040px) {
+  .image .plusUnfilled{
+    right: 8em;
+    font-size: 1.4em;
+  }
+  
+  
+  .image .plusFilled{
+    right: 8em;
+    font-size: 1.4em;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .image .plusUnfilled{
+    left: .1em;
+    font-size: 2.5em;
+  }
+  
+  
+  .image .plusFilled{
+    left: .1em;
+    font-size: 2.5em;
+  }
+}
+
+
+
+
+/* cart page related css*/
+.flexCol{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 2em;
+}
+
+.flexCart{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.flexCart img{
+  width: 35vw;
+  margin-left: 2.4em;
+}
+
+
+@media screen and (min-width: 700px) {
+  .flexCart img{
+    width: 30vw;
+    margin-left: 2.4em;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .flexCart img{
+   
+    margin-left: 3.5em;
+  }
+}
+
+
+@media screen and (min-width: 1040px) {
+  .flexCart img{
+    width: 25vw;
+    margin-left: 3.5em;
+  }
+}
+
+.flexCart p{
+  margin-right: 1.4em;
+}
+
+@media screen and (min-width: 600px) {
+  .flexCart p{
+    margin-right: 1.1em;
+    font-size: large;
+  }
+}
+
+@media screen and (min-width: 1040px) {
+  .flexCart p{
+    margin-right: 4em;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .flexCart p{
+    margin-right: 2em;
+    font-size: 1.8em;
+  }
+}
+
+
+.flexTotal{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.flexTotal button {
+  font-size: 1.2em;
+  padding: 0.3em 1.8em;
+  border-radius: 1em;
+  border: none;
+  box-shadow: 0.1em 0.1em;
+  position: relative;
+  left: 10%;
+  transition: transform .2s
+}
+
+.flexTotal button:hover{
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 700px) {
+  .flexTotal button {
+    padding: .7em 5em;
+    left: 30%;
+   
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .flexTotal button {
+    padding: 1em 10em;
+    left: 30%;
+    font-size: 1.5em;
+    
+  }
+}
+
+
+
+.flexTotal h3{
+  margin-right: 1.2em;
+}
+
+
+@media screen and (min-width: 1040px) {
+  .flexTotal h3 {
+    margin-right: 4em;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .flexTotal h3 {
+    font-size: 2em;
+    margin-right: 2em;
+  }
+}
+
+.trashunfocused{
+  font-size: 1.4em;
+  color: white;
+  position: absolute;
+  top: 3em;
+  left: .4em;
+}
+
+
+.trashfocused{
+  font-size: 1.5em;
+  color: #05386B;
+  position: absolute;
+  top: 3em;
+  left: .4em;
+}
+
+@media screen and (min-width: 700px) {
+  .trashunfocused{
+    font-size: 1.5em;
+    color: white;
+    position: absolute;
+    top: 2.5em;
+    left: .4em;
+  }
+  
+  
+  .trashfocused{
+    font-size: 1.5em;
+    color: #05386B;
+    position: absolute;
+    top: 2.8em;
+    left: .4em;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .trashunfocused{
+    font-size: 2.3em;
+    color: white;
+    position: absolute;
+    top: 3em;
+    left: .4em;
+    
+  }
+  
+  
+  .trashfocused{
+    font-size: 2.3em;
+    color: #05386B;
+    position: absolute;
+    top: 3.2em;
+    left: .4em;
+  }
+}
+
+h1{
+  text-align: center;
+  margin-top: 2em;
 }
