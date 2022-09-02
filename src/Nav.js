@@ -16,9 +16,9 @@ export default function Nav(props){
     // Links changes the actual url we are on
     return(
         <nav className="navbar">
-            <h1><Link style={{textDecoration: 'None'}} to="/" >Pick A Pic</Link></h1>
+            <h1><Link style={{textDecoration: 'None'}} to="/React-Pick-A-Pic" >Pick A Pic</Link></h1>
             <div className="flex">
-                <Link to="cart">{cartHasItem}</Link>
+                <Link to="/React-Pick-A-Pic/cart">{cartHasItem}</Link>
             </div>
         </nav>
     )
