@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/React-Pick-A-Pic/precache-manifest.635e52134b20594c8749d868f309f3c9.js"
+  "/React-Pick-A-Pic/precache-manifest.08e615550c3404542cf473e0864bb799.js"
 );
 
 workbox.clientsClaim();
