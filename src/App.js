@@ -14,7 +14,7 @@ function App() {
       <Nav />
       <hr />
       <Routes>
-        <Route exact path="/React-Pick-A-Pic/" element={<Home />} />
+        <Route exact path="/React-Pick-A-Pic" element={<Home />} />
         <Route path="/React-Pick-A-Pic/cart" element={<Cart />} />
       </Routes>
     </>
